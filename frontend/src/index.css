@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Manrope", ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink-950: #070f0e;
+  --color-ink-900: #0a1614;
+  --color-ink-850: #0d1d1a;
+  --color-ink-800: #112620;
+  --color-ink-700: #16302b;
+  --color-ink-600: #1e3f38;
+  --color-ink-500: #2a544b;
+
+  --color-teal-950: #071c19;
+  --color-teal-900: #0e2f2a;
+  --color-teal-800: #124039;
+  --color-teal-700: #175c50;
+  --color-teal-600: #1f7a6a;
+  --color-teal-500: #2ba38d;
+  --color-teal-400: #4dc4ab;
+  --color-teal-300: #7fdcc4;
+
+  --color-gold-600: #b8892b;
+  --color-gold-500: #d9a53c;
+  --color-gold-400: #ecc158;
+  --color-gold-300: #f3d488;
+
+  --color-paper-100: #f6f4ec;
+  --color-paper-200: #e9e5d6;
+  --color-paper-muted: #9fb0aa;
+  --color-paper-faint: #64766f;
+
+  --color-danger: #e3665a;
+  --color-success: #4dc4ab;
+
+  --shadow-glow-gold: 0 0 0 1px rgba(217, 165, 60, 0.25), 0 8px 30px -8px rgba(217, 165, 60, 0.35);
+  --shadow-glow-teal: 0 0 0 1px rgba(43, 163, 141, 0.25), 0 8px 30px -8px rgba(43, 163, 141, 0.4);
+
+  --animate-fade-up: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-fade-in: fade-in 0.5s ease both;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+@layer base {
+  * {
+    border-color: var(--color-ink-600);
+  }
+  html {
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-ink-900 text-paper-100 font-body antialiased;
+    margin: 0;
+    background-image:
+      radial-gradient(ellipse 900px 500px at 12% -10%, rgba(43, 163, 141, 0.16), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 100% 0%, rgba(217, 165, 60, 0.08), transparent 55%);
+    background-attachment: fixed;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight;
+  }
+  ::selection {
+    background: rgba(217, 165, 60, 0.35);
+  }
+}
+
+@layer utilities {
+  .stagger > * {
+    animation: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .stagger > *:nth-child(1) { animation-delay: 0ms; }
+  .stagger > *:nth-child(2) { animation-delay: 70ms; }
+  .stagger > *:nth-child(3) { animation-delay: 140ms; }
+  .stagger > *:nth-child(4) { animation-delay: 210ms; }
+  .stagger > *:nth-child(5) { animation-delay: 280ms; }
+  .stagger > *:nth-child(6) { animation-delay: 350ms; }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: var(--color-ink-500);
+    border-radius: 999px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
